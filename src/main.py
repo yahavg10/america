@@ -8,9 +8,9 @@ orchestrator create InternalRepository for everyone with all the default values
 orchestrator create SchemeRepository one for kafka and one for s3 with all the schemes and models loaded and save them (api & america schemes)
     scheme obj : [name(inherited from filename), api_scheme, america_scheme, scheme_model]
 orchestrator calls static EndPointFactory to register kafka / s3 schemes from SchemeRepository,InternalRepository for each one
-EndPointFactory access EndPointRepository and save there the endpoint name, scheme model, SchemeRepository
+EndPointFactory access EndPointRepository and save there the endpoint name, scheme model, scheme_obj
 EndPointRepository has get_endpoint_internal_conf [ goes to global InternalRepository and search for the data by endpoint name]
-EndPointRepository has get_endpoint_america_scheme [ goes to SchemeRepository and search for the america scheme by endpoint name]
+EndPointRepository has get_endpoint_america_scheme [ goes to scheme_obj and get america scheme by endpoint name]
 
 ** endpoint called
     internal_conf = endpoint search in EndPointRepository by the type of request and get internal_conf
